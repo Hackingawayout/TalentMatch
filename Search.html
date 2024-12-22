@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon1.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-image: url('bg.png'); /* Replace with your actual image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        nav {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .nav-left,
+        nav .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .nav-left button,
+        nav .nav-right button {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav .nav-right button {
+            margin-right: 40px; /* Moves the Logout button slightly to the left */
+        }
+
+        nav .nav-left button:hover,
+        nav .nav-right button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        nav .nav-center {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 80px auto 20px auto;
+            padding: 10px;
+            flex-grow: 1; /* Ensures the content area grows to push the footer down */
+        }
+
+        .card {
+            width: 500px;
+            height: 400px;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 100px;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover img {
+            opacity: 0.3;
+        }
+
+        .card-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            color: white;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover .card-content {
+            opacity: 1;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .card-description {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .card-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .card-buttons button {
+            background-color: #ffffff;
+            color: #567acb;
+            border: none;
+            border-radius: 15px;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .card-buttons button:hover {
+            background-color: #567acb;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .footer a {
+            color: #567acb;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <button onclick="location.href='Home.html'">Home</button>
+        </div>
+        <div class="nav-center">TalentMatch</div>
+        <div class="nav-right">
+            <button onclick="location.href='Home.html'">Logout</button>
+        </div>
+    </nav>
+
+    <div class="cards-container">
+        <div class="card">
+            <img src="projects.jpg" alt="Projects">
+            <div class="card-content">
+                <h3>Projects</h3>
+                <div class="card-description">Collaborate on innovative projects or start a new one to showcase your skills.</div>
+                <div class="card-buttons">
+                    <button onclick="location.href='join_a_project.html'">Join a Project</button>
+                    <button onclick="location.href='create_new_project.html'">Create a New Project</button>
+                </div>
+            </div>
+        </div>
+        <!-- Hackathon Card -->
+        <div class="card">
+            <img src="hackathon.jpg" alt="Hackathon">
+            <div class="card-content">
+                <h3>Hackathon</h3>
+                <div class="card-description">Participate in exciting hackathons and build solutions for real-world problems.</div>
+                <div class="card-buttons">
+                    <button onclick="location.href='join_a_team_hackathon.html'">Join a Team</button>
+                    <button onclick="location.href='create_a_team_hackathon.html'">Create a Team</button>
+                </div>
+            </div>
+        </div>
+        <!-- Internship Card -->
+        <div class="card">
+            <img src="internship.jpg" alt="Internship">
+            <div class="card-content">
+                <h3>Internship</h3>
+                <div class="card-description">Find internship opportunities to gain valuable industry experience.</div>
+                <div class="card-buttons">
+                    <button onclick="location.href='internship.html'">Apply Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Startup Card -->
+        <div class="card">
+            <img src="startup.jpg" alt="Startup">
+            <div class="card-content">
+                <h3>Startup</h3>
+                <div class="card-description">Connect with freelancers or build a team to bring your startup ideas to life.</div>
+                <div class="card-buttons">
+                    <button onclick="location.href='startup.html'">Search for Freelancer</button>
+                </div>
+            </div>
+        </div>
+        <!-- Basic Queries Card -->
+        <div class="card" onclick="location.href='Basic_query.html'" style="cursor: pointer;">
+            <img src="queries.jpg" alt="Basic Queries">
+            <div class="card-content">
+                <h3>Basic Queries</h3>
+                <div class="card-description">Get quick answers to common questions and clear your doubts easily.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 TalentMatch. All rights reserved.</p>
+        <p>
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </div>
+</body>
+</html>
+  

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        ul.suggestions {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        ul.suggestions li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        ul.suggestions li:hover {
+            background-color: #f1f1f1;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+
+    <div id="search-container">
+        <input type="text" id="company-input" placeholder="Enter company name" oninput="showSuggestions()">
+        <button onclick="checkInternship()">Search</button>
+    </div>
+    <ul id="suggestions" class="suggestions"></ul>
+
+    <div id="result"></div>
+
+   
+    <script>
+        const companiesOfferingInternships = [
+            "Google", "Microsoft", "Apple", "Amazon", "Facebook", "IBM", "Intel", "Adobe", "Netflix", "Tesla",
+            "LinkedIn", "Salesforce", "Twitter", "Oracle", "SAP", "Cisco", "HP", "Dell", "Zoom", "Uber",
+            "Spotify", "Red Hat", "Qualcomm", "Nvidia", "Snapchat", "Pinterest", "Dropbox", "Shopify", "GitHub", "Slack",
+            "VMware", "Airbnb", "Stripe", "Square", "PayPal", "Coinbase", "TikTok", "Alibaba", "Baidu", "Tencent"
+        ];
+
+        function checkInternship() {
+            const input = document.getElementById("company-input").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (input === "") {
+                resultDiv.textContent = "Please enter a company name.";
+                return;
+            }
+
+            const isOffering = companiesOfferingInternships.includes(input);
+
+            if (isOffering) {
+                resultDiv.textContent = `${input} is offering internships.`;
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.textContent = `${input} is not offering any internships (Unavailable).`;
+                resultDiv.style.color = "red";
+            }
+        }
+
+        function showSuggestions() {
+            const input = document.getElementById("company-input").value.trim().toLowerCase();
+            const suggestionsList = document.getElementById("suggestions");
+
+            if (input === "") {
+                suggestionsList.style.display = "none";
+                return;
+            }
+
+            const filteredCompanies = companiesOfferingInternships.filter(company =>
+                company.toLowerCase().startsWith(input)
+            );
+
+            suggestionsList.innerHTML = filteredCompanies.map(company => `<li onclick="selectSuggestion('${company}')">${company}</li>`).join("");
+            suggestionsList.style.display = filteredCompanies.length > 0 ? "block" : "none";
+        }
+
+        function selectSuggestion(company) {
+            document.getElementById("company-input").value = company;
+            document.getElementById("suggestions").style.display = "none";
+        }
+    </script>
+</body>
+</html>

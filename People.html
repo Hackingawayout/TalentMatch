@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon1.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('people.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .navbar1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            color: white;
+            z-index: 1000;
+            /* Ensure it stays above other content */
+        }
+
+        .navbar1 a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .navbar1 a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar1 h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .navbar1 a:last-child {
+            margin-right: 40px;
+            /* Adjust the value as needed */
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            /* Add slight background for content visibility */
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .cart-icon {
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            background-color: red;
+            color: white;
+            font-size: 0.9rem;
+            border-radius: 50%;
+            padding: 2px 6px;
+            margin-left: 5px;
+        }
+
+        .menu-item-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .menu-item-card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .menu-item-card .btn-cart {
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .profile-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .profile-card img {
+            max-width: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile-card .btn-view {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .footer a {
+            color: #567acb;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar1">
+        <a href="search.html">Home</a>
+        <h1>TalentMatch</h1>
+        <a href="home.html">Logout</a>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- John Doe -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="John Doe">
+                    <h5>John Doe</h5>
+                    <p>Email: john.doe@example.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Soft Skills: Communication, Teamwork</p>
+                    <p>Technical Skills: Python, JavaScript</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Software Engineer at XYZ Corp</p>
+                </div>
+            </div>
+
+            <!-- Jane Smith -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Jane Smith">
+                    <h5>Jane Smith</h5>
+                    <p>Email: jane.smith@example.com</p>
+                    <p>Phone: +91 87654 32109</p>
+                    <p>Soft Skills: Problem-solving, Critical-thinking</p>
+                    <p>Technical Skills: Java, SQL</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Backend Developer at ABC Ltd</p>
+                </div>
+            </div>
+
+            <!-- Emily Johnson -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Emily Johnson">
+                    <h5>Emily Johnson</h5>
+                    <p>Email: emily.johnson@example.com</p>
+                    <p>Phone: +91 99887 66554</p>
+                    <p>Soft Skills: Creativity, Time-management</p>
+                    <p>Technical Skills: HTML, CSS</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: UI/UX Designer at Creative Studio</p>
+                </div>
+            </div>
+
+            <!-- Michael Brown -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Michael Brown">
+                    <h5>Michael Brown</h5>
+                    <p>Email: michael.brown@example.com</p>
+                    <p>Phone: +91 91234 56789</p>
+                    <p>Soft Skills: Leadership, Adaptability</p>
+                    <p>Technical Skills: React, JavaScript</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Frontend Developer at TechWave</p>
+                </div>
+            </div>
+
+            <!-- David Wilson -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="David Wilson">
+                    <h5>David Wilson</h5>
+                    <p>Email: david.wilson@example.com</p>
+                    <p>Phone: +91 99887 12345</p>
+                    <p>Soft Skills: Teamwork, Time-management</p>
+                    <p>Technical Skills: Java, Python</p>
+                    <p>Work Experience: 6 years</p>
+                    <p>Previous Jobs: Software Architect at Solutions Inc</p>
+                </div>
+            </div>
+
+            <!-- Sophia Martinez -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Sophia Martinez">
+                    <h5>Sophia Martinez</h5>
+                    <p>Email: sophia.martinez@example.com</p>
+                    <p>Phone: +91 98765 87654</p>
+                    <p>Soft Skills: Communication, Creativity</p>
+                    <p>Technical Skills: SQL, PHP</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Database Administrator at DataCorp</p>
+                </div>
+            </div>
+
+            <!-- Daniel Davis -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Daniel Davis">
+                    <h5>Daniel Davis</h5>
+                    <p>Email: daniel.davis@example.com</p>
+                    <p>Phone: +91 92345 67890</p>
+                    <p>Soft Skills: Problem-solving, Critical-thinking</p>
+                    <p>Technical Skills: C++, Java, JavaScript</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Game Developer at PlayNow</p>
+                </div>
+            </div>
+
+            <!-- Olivia Garcia -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Olivia Garcia">
+                    <h5>Olivia Garcia</h5>
+                    <p>Email: olivia.garcia@example.com</p>
+                    <p>Phone: +91 93456 78901</p>
+                    <p>Soft Skills: Teamwork, Leadership</p>
+                    <p>Technical Skills: Ruby, Python</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: Data Scientist at Analytics Pro</p>
+                </div>
+            </div>
+
+            <!-- Lucas Lee -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Lucas Lee">
+                    <h5>Lucas Lee</h5>
+                    <p>Email: lucas.lee@example.com</p>
+                    <p>Phone: +91 94567 89012</p>
+                    <p>Soft Skills: Adaptability, Time-management</p>
+                    <p>Technical Skills: React, JavaScript</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Full Stack Developer at WebWorks</p>
+                </div>
+            </div>
+
+            <!-- Isabella White -->
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Isabella White">
+                    <h5>Isabella White</h5>
+                    <p>Email: isabella.white@example.com</p>
+                    <p>Phone: +91 95678 90123</p>
+                    <p>Soft Skills: Critical-thinking, Creativity</p>
+                    <p>Technical Skills: HTML, CSS, JavaScript</p>
+                    <p>Work Experience: 1 year</p>
+                    <p>Previous Jobs: Junior Developer at StartUp Hub</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Ava Clark">
+                    <h5>Ava Clark</h5>
+                    <p>Email: ava.clark@example.com</p>
+                    <p>Phone: +91 96789 01234</p>
+                    <p>Soft Skills: Collaboration, Problem-solving</p>
+                    <p>Technical Skills: Node.js, Express.js</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Backend Engineer at Web Solutions</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Ethan Hall">
+                    <h5>Ethan Hall</h5>
+                    <p>Email: ethan.hall@example.com</p>
+                    <p>Phone: +91 97890 12345</p>
+                    <p>Soft Skills: Leadership, Time-management</p>
+                    <p>Technical Skills: Python, Machine Learning</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Data Engineer at TechnoBytes</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Charlotte King">
+                    <h5>Charlotte King</h5>
+                    <p>Email: charlotte.king@example.com</p>
+                    <p>Phone: +91 98765 43221</p>
+                    <p>Soft Skills: Communication, Leadership</p>
+                    <p>Technical Skills: Python, Data Analysis</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Data Analyst at Insight Analytics</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Liam Harris">
+                    <h5>Liam Harris</h5>
+                    <p>Email: liam.harris@example.com</p>
+                    <p>Phone: +91 87654 32110</p>
+                    <p>Soft Skills: Problem-solving, Adaptability</p>
+                    <p>Technical Skills: Java, Spring Boot, JavaScript</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Backend Engineer at CoreTech</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Amelia Scott">
+                    <h5>Amelia Scott</h5>
+                    <p>Email: amelia.scott@example.com</p>
+                    <p>Phone: +91 99887 66543</p>
+                    <p>Soft Skills: Creativity, Teamwork</p>
+                    <p>Technical Skills: HTML, JavaScript</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: Frontend Developer at CreativeDev</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="James Walker">
+                    <h5>James Walker</h5>
+                    <p>Email: james.walker@example.com</p>
+                    <p>Phone: +91 91234 56780</p>
+                    <p>Soft Skills: Critical-thinking, Time-management</p>
+                    <p>Technical Skills: React, TypeScript</p>
+                    <p>Work Experience: 6 years</p>
+                    <p>Previous Jobs: Full Stack Developer at Innovate Solutions</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Mia Roberts">
+                    <h5>Mia Roberts</h5>
+                    <p>Email: mia.roberts@example.com</p>
+                    <p>Phone: +91 99887 12346</p>
+                    <p>Soft Skills: Communication, Time-management</p>
+                    <p>Technical Skills: Java, Kotlin</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Mobile Developer at AppCraft</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Benjamin Allen">
+                    <h5>Benjamin Allen</h5>
+                    <p>Email: benjamin.allen@example.com</p>
+                    <p>Phone: +91 98765 43211</p>
+                    <p>Soft Skills: Adaptability, Leadership</p>
+                    <p>Technical Skills: Python, Django, JavaScript</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Software Developer at WebGenics</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Sophia Adams">
+                    <h5>Sophia Adams</h5>
+                    <p>Email: sophia.adams@example.com</p>
+                    <p>Phone: +91 91234 56781</p>
+                    <p>Soft Skills: Problem-solving, Teamwork</p>
+                    <p>Technical Skills: PHP, MySQL</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Backend Developer at CodeSphere</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Elijah Carter">
+                    <h5>Elijah Carter</h5>
+                    <p>Email: elijah.carter@example.com</p>
+                    <p>Phone: +91 93456 78902</p>
+                    <p>Soft Skills: Leadership, Adaptability</p>
+                    <p>Technical Skills: Python, Machine Learning</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: ML Engineer at DataMind</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Harper Wilson">
+                    <h5>Harper Wilson</h5>
+                    <p>Email: harper.wilson@example.com</p>
+                    <p>Phone: +91 94567 89013</p>
+                    <p>Soft Skills: Creativity, Time-management</p>
+                    <p>Technical Skills: HTML, CSS, JavaScript</p>
+                    <p>Work Experience: 1 year</p>
+                    <p>Previous Jobs: Junior Designer at PixelStudio</p>
+                    <p>Projects: Travel Blog, Online Portfolio</p>
+                    <p>Hackathons: DesignIt 2023</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Aiden Miller">
+                    <h5>Aiden Miller</h5>
+                    <p>Email: aiden.miller@example.com</p>
+                    <p>Phone: +91 95678 90124</p>
+                    <p>Soft Skills: Critical-thinking, Problem-solving</p>
+                    <p>Technical Skills: C, Python</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Software Engineer at SoftWorld</p>
+                    <p>Projects: Scheduling App, Budget Management Tool</p>
+                    <p>Hackathons: CodeWorld 2023</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Evelyn Young">
+                    <h5>Evelyn Young</h5>
+                    <p>Email: evelyn.young@example.com</p>
+                    <p>Phone: +91 96789 01235</p>
+                    <p>Soft Skills: Collaboration, Creativity</p>
+                    <p>Technical Skills: Node.js, Express.js</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: API Developer at BackendPro</p>
+                    <p>Projects: Weather API, File Sharing System</p>
+                    <p>Hackathons: NodeChallenge 2022</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Henry Ramirez">
+                    <h5>Henry Ramirez</h5>
+                    <p>Email: henry.ramirez@example.com</p>
+                    <p>Phone: +91 97890 12346</p>
+                    <p>Soft Skills: Leadership, Time-management</p>
+                    <p>Technical Skills: Java, Angular</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Frontend Developer at Angularity</p>
+                    <p>Projects: E-Commerce Portal, Blogging Tool</p>
+                    <p>Hackathons: AngularHack 2022</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Isabella Torres">
+                    <h5>Isabella Torres</h5>
+                    <p>Email: isabella.torres@example.com</p>
+                    <p>Phone: +91 98765 43222</p>
+                    <p>Soft Skills: Problem-solving, Teamwork</p>
+                    <p>Technical Skills: C++, Java</p>
+                    <p>Work Experience: 6 years</p>
+                    <p>Previous Jobs: Game Developer at DreamGames</p>
+                    <p>Projects: 2D Game Engine, Simulation Game</p>
+                    <p>Hackathons: GameHack 2023</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Daniel Foster">
+                    <h5>Daniel Foster</h5>
+                    <p>Email: daniel.foster@example.com</p>
+                    <p>Phone: +91 87654 32111</p>
+                    <p>Soft Skills: Adaptability, Time-management</p>
+                    <p>Technical Skills: Python, Django</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Backend Developer at AppDynamics</p>
+                    <p>Projects: Event Booking System, API Gateway</p>
+                    <p>Hackathons: DjangoSprint 2023</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Grace Bell">
+                    <h5>Grace Bell</h5>
+                    <p>Email: grace.bell@example.com</p>
+                    <p>Phone: +91 99887 66544</p>
+                    <p>Soft Skills: Communication, Creativity</p>
+                    <p>Technical Skills: HTML, Bootstrap</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: Web Designer at DesignMasters</p>
+                    <p>Projects: Fashion Blog, Recipe Website</p>
+                    <p>Hackathons: WebSprint 2022</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Samuel Edwards">
+                    <h5>Samuel Edwards</h5>
+                    <p>Email: samuel.edwards@example.com</p>
+                    <p>Phone: +91 91234 56782</p>
+                    <p>Soft Skills: Teamwork, Critical-thinking</p>
+                    <p>Technical Skills: Java, Android</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Mobile Developer at DroidTech</p>
+                    <p>Projects: Health Tracker App, News Aggregator</p>
+                    <p>Hackathons: AndroidHack 2023</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Ava Clark">
+                    <h5>Ava Clark</h5>
+                    <p>Email: ava.clark@example.com</p>
+                    <p>Phone: +91 96789 01234</p>
+                    <p>Soft Skills: Collaboration, Problem-solving</p>
+                    <p>Technical Skills: Node.js, Express.js</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Backend Engineer at Web Solutions</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Ethan Hall">
+                    <h5>Ethan Hall</h5>
+                    <p>Email: ethan.hall@example.com</p>
+                    <p>Phone: +91 97890 12345</p>
+                    <p>Soft Skills: Leadership, Time-management</p>
+                    <p>Technical Skills: Python, Machine Learning</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Data Engineer at TechnoBytes</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Charlotte King">
+                    <h5>Charlotte King</h5>
+                    <p>Email: charlotte.king@example.com</p>
+                    <p>Phone: +91 98765 43221</p>
+                    <p>Soft Skills: Communication, Leadership</p>
+                    <p>Technical Skills: Python, Data Analysis</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Data Analyst at Insight Analytics</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Liam Harris">
+                    <h5>Liam Harris</h5>
+                    <p>Email: liam.harris@example.com</p>
+                    <p>Phone: +91 87654 32110</p>
+                    <p>Soft Skills: Problem-solving, Adaptability</p>
+                    <p>Technical Skills: Java, Spring Boot</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Backend Engineer at CoreTech</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Amelia Scott">
+                    <h5>Amelia Scott</h5>
+                    <p>Email: amelia.scott@example.com</p>
+                    <p>Phone: +91 99887 66543</p>
+                    <p>Soft Skills: Creativity, Teamwork</p>
+                    <p>Technical Skills: HTML, JavaScript</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: Frontend Developer at CreativeDev</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="James Walker">
+                    <h5>James Walker</h5>
+                    <p>Email: james.walker@example.com</p>
+                    <p>Phone: +91 91234 56780</p>
+                    <p>Soft Skills: Critical-thinking, Time-management</p>
+                    <p>Technical Skills: React, TypeScript</p>
+                    <p>Work Experience: 6 years</p>
+                    <p>Previous Jobs: Full Stack Developer at Innovate Solutions</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Mia Roberts">
+                    <h5>Mia Roberts</h5>
+                    <p>Email: mia.roberts@example.com</p>
+                    <p>Phone: +91 99887 12346</p>
+                    <p>Soft Skills: Communication, Time-management</p>
+                    <p>Technical Skills: Java, Kotlin</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Mobile Developer at AppCraft</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Benjamin Allen">
+                    <h5>Benjamin Allen</h5>
+                    <p>Email: benjamin.allen@example.com</p>
+                    <p>Phone: +91 98765 43211</p>
+                    <p>Soft Skills: Adaptability, Leadership</p>
+                    <p>Technical Skills: Python, Django</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Software Developer at WebGenics</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Sophia Adams">
+                    <h5>Sophia Adams</h5>
+                    <p>Email: sophia.adams@example.com</p>
+                    <p>Phone: +91 91234 56781</p>
+                    <p>Soft Skills: Problem-solving, Teamwork</p>
+                    <p>Technical Skills: PHP, MySQL</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Backend Developer at CodeSphere</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Elijah Carter">
+                    <h5>Elijah Carter</h5>
+                    <p>Email: elijah.carter@example.com</p>
+                    <p>Phone: +91 93456 78902</p>
+                    <p>Soft Skills: Leadership, Adaptability</p>
+                    <p>Technical Skills: Python, Machine Learning</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: ML Engineer at DataMind</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Harper Wilson">
+                    <h5>Harper Wilson</h5>
+                    <p>Email: harper.wilson@example.com</p>
+                    <p>Phone: +91 94567 89013</p>
+                    <p>Soft Skills: Creativity, Time-management</p>
+                    <p>Technical Skills: HTML, CSS</p>
+                    <p>Work Experience: 1 year</p>
+                    <p>Previous Jobs: Junior Designer at PixelStudio</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Aiden Miller">
+                    <h5>Aiden Miller</h5>
+                    <p>Email: aiden.miller@example.com</p>
+                    <p>Phone: +91 95678 90124</p>
+                    <p>Soft Skills: Critical-thinking, Problem-solving</p>
+                    <p>Technical Skills: C, Python</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Software Engineer at SoftWorld</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Evelyn Young">
+                    <h5>Evelyn Young</h5>
+                    <p>Email: evelyn.young@example.com</p>
+                    <p>Phone: +91 96789 01235</p>
+                    <p>Soft Skills: Collaboration, Creativity</p>
+                    <p>Technical Skills: Node.js, Express.js</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: API Developer at BackendPro</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Henry Ramirez">
+                    <h5>Henry Ramirez</h5>
+                    <p>Email: henry.ramirez@example.com</p>
+                    <p>Phone: +91 97890 12346</p>
+                    <p>Soft Skills: Leadership, Time-management</p>
+                    <p>Technical Skills: Java, Angular</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Frontend Developer at Angularity</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Isabella Torres">
+                    <h5>Isabella Torres</h5>
+                    <p>Email: isabella.torres@example.com</p>
+                    <p>Phone: +91 98765 43222</p>
+                    <p>Soft Skills: Problem-solving, Teamwork</p>
+                    <p>Technical Skills: C++, Java</p>
+                    <p>Work Experience: 6 years</p>
+                    <p>Previous Jobs: Game Developer at DreamGames</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Daniel Foster">
+                    <h5>Daniel Foster</h5>
+                    <p>Email: daniel.foster@example.com</p>
+                    <p>Phone: +91 87654 32111</p>
+                    <p>Soft Skills: Adaptability, Time-management</p>
+                    <p>Technical Skills: Python, Django</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Backend Developer at AppDynamics</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Grace Bell">
+                    <h5>Grace Bell</h5>
+                    <p>Email: grace.bell@example.com</p>
+                    <p>Phone: +91 99887 66544</p>
+                    <p>Soft Skills: Communication, Creativity</p>
+                    <p>Technical Skills: HTML, Bootstrap</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: Web Designer at DesignMasters</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Samuel Edwards">
+                    <h5>Samuel Edwards</h5>
+                    <p>Email: samuel.edwards@example.com</p>
+                    <p>Phone: +91 91234 56782</p>
+                    <p>Soft Skills: Teamwork, Critical-thinking</p>
+                    <p>Technical Skills: Java, Android</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Mobile Developer at DroidTech</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Olivia Martinez">
+                    <h5>Olivia Martinez</h5>
+                    <p>Email: olivia.martinez@example.com</p>
+                    <p>Phone: +91 96543 67890</p>
+                    <p>Soft Skills: Teamwork, Communication</p>
+                    <p>Technical Skills: Angular, TypeScript</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Frontend Developer at BrightWeb</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Noah Robinson">
+                    <h5>Noah Robinson</h5>
+                    <p>Email: noah.robinson@example.com</p>
+                    <p>Phone: +91 93456 78921</p>
+                    <p>Soft Skills: Problem-solving, Critical-thinking</p>
+                    <p>Technical Skills: Go, Kubernetes</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: DevOps Engineer at CloudMatrix</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Ava Clark">
+                    <h5>Ava Clark</h5>
+                    <p>Email: ava.clark@example.com</p>
+                    <p>Phone: +91 94567 89032</p>
+                    <p>Soft Skills: Creativity, Adaptability</p>
+                    <p>Technical Skills: HTML, SASS</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: Web Designer at StyleCraft</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Lucas Wright">
+                    <h5>Lucas Wright</h5>
+                    <p>Email: lucas.wright@example.com</p>
+                    <p>Phone: +91 91234 56791</p>
+                    <p>Soft Skills: Adaptability, Teamwork</p>
+                    <p>Technical Skills: Python, TensorFlow</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: AI Developer at SmartTech</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Emily Carter">
+                    <h5>Emily Carter</h5>
+                    <p>Email: emily.carter@example.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Soft Skills: Problem-solving, Communication</p>
+                    <p>Technical Skills: JavaScript, React</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Frontend Developer at Webify</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Aiden Brown">
+                    <h5>Aiden Brown</h5>
+                    <p>Email: aiden.brown@example.com</p>
+                    <p>Phone: +91 87654 32109</p>
+                    <p>Soft Skills: Leadership, Critical Thinking</p>
+                    <p>Technical Skills: Java, Spring Boot</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Backend Developer at DataStream</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Sophia Taylor">
+                    <h5>Sophia Taylor</h5>
+                    <p>Email: sophia.taylor@example.com</p>
+                    <p>Phone: +91 99887 66554</p>
+                    <p>Soft Skills: Time Management, Creativity</p>
+                    <p>Technical Skills: C++, OpenCV</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: Software Engineer at VisionAI</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Mia Anderson">
+                    <h5>Mia Anderson</h5>
+                    <p>Email: mia.anderson@example.com</p>
+                    <p>Phone: +91 88776 55443</p>
+                    <p>Soft Skills: Collaboration, Initiative</p>
+                    <p>Technical Skills: HTML, CSS, Bootstrap</p>
+                    <p>Work Experience: 1 year</p>
+                    <p>Previous Jobs: Web Designer at CreativeWeb</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Liam Harris">
+                    <h5>Liam Harris</h5>
+                    <p>Email: liam.harris@example.com</p>
+                    <p>Phone: +91 77665 44332</p>
+                    <p>Soft Skills: Decision-making, Work Ethic</p>
+                    <p>Technical Skills: Python, Django</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Full Stack Developer at CodeHive</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Olivia Martinez">
+                    <h5>Olivia Martinez</h5>
+                    <p>Email: olivia.martinez@example.com</p>
+                    <p>Phone: +91 66554 33221</p>
+                    <p>Soft Skills: Empathy, Negotiation</p>
+                    <p>Technical Skills: SQL, PostgreSQL</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Database Administrator at DataSys</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Ethan Wilson">
+                    <h5>Ethan Wilson</h5>
+                    <p>Email: ethan.wilson@example.com</p>
+                    <p>Phone: +91 55443 22110</p>
+                    <p>Soft Skills: Flexibility, Innovation</p>
+                    <p>Technical Skills: Machine Learning, PyTorch</p>
+                    <p>Work Experience: 2 years</p>
+                    <p>Previous Jobs: ML Engineer at NeuralNet</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Isabella Thomas">
+                    <h5>Isabella Thomas</h5>
+                    <p>Email: isabella.thomas@example.com</p>
+                    <p>Phone: +91 44332 11009</p>
+                    <p>Soft Skills: Organization, Team Management</p>
+                    <p>Technical Skills: Ruby, Rails</p>
+                    <p>Work Experience: 5 years</p>
+                    <p>Previous Jobs: Software Developer at CodeBase</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Noah Lewis">
+                    <h5>Noah Lewis</h5>
+                    <p>Email: noah.lewis@example.com</p>
+                    <p>Phone: +91 33221 00987</p>
+                    <p>Soft Skills: Multitasking, Resilience</p>
+                    <p>Technical Skills: Angular, TypeScript</p>
+                    <p>Work Experience: 3 years</p>
+                    <p>Previous Jobs: Frontend Engineer at AppCraft</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-card">
+                    <img src="profile.png" alt="Emma Robinson">
+                    <h5>Emma Robinson</h5>
+                    <p>Email: emma.robinson@example.com</p>
+                    <p>Phone: +91 22110 09876</p>
+                    <p>Soft Skills: Active Listening, Self-Motivation</p>
+                    <p>Technical Skills: Node.js, Express.js</p>
+                    <p>Work Experience: 4 years</p>
+                    <p>Previous Jobs: Backend Developer at ServerTech</p>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 TalentMatch. All rights reserved.</p>
+        <p>
+            <a href="terms.html">Terms of Service</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

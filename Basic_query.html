@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Assistance</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon1.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding-top: 50px;
+            overflow: hidden;
+        }
+
+        .navbar1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            color: white;
+            z-index: 1000;
+        }
+
+        .navbar1 a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .navbar1 h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .navbar1 a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar1 a:last-child {
+            margin-right: 40px; /* Adjust the value as needed */
+        }
+
+        .navbar {
+            background-color: #3b4c61; /* Dark blue background for navbar */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 30px 30px 0 0; /* Rounded top corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%; /* Ensures the navbar spans across the full container width */
+            box-sizing: border-box; /* Ensures padding is included in width calculation */
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: #ffffff00;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 80px;
+        }
+        
+
+        .navbar .left,
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar .left a,
+        .navbar .right a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar .left a i,
+        .navbar .right a i {
+            margin-right: 5px;
+        }
+        
+        .navbar .circle {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .question-mark {
+            width: 70px;
+            height: 70px;
+            background-color: #3b4c61; /* Dark blue for the question mark */
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .search-bar button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        
+        .chat-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .results-container {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 20px;
+            padding: 10px;
+            white-space: nowrap;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .results-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .results-container::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+
+        .card {
+            flex: 0 0 250px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #218838;
+        }
+
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .modal .send-button {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .modal .cancel-button {
+            background-color: #ccc;
+            color: black;
+        }
+
+        .notification {
+            padding: 10px;
+            border: 1px solid green;
+            background-color: #d4edda;
+            color: green;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .back-button {
+            background-color: #567acb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <div class="navbar1">
+        <a href="search.html">Home</a>
+        <h1>TalentMatch</h1>
+        <a href="home.html">Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="navbar">    
+            <div class="left">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>  
+            </div>
+            <div class="right">
+                <!-- <a href="#"><i class="fas fa-search"></i>Search</a> -->
+                <a href="People.html"><i class="fas fa-users"></i>Skilled People</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">Ask Your Question</div>
+            <div class="search-bar">
+                <input id="queryInput" type="text" placeholder="Type your question here...">
+                <button onclick="getSuggestions()">Search</button>
+            </div>
+            <div id="results" class="results-container"></div>
+            <button class="back-button" onclick="goBack()">Back to Search</button>
+        </div>       
+    </div>
+
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Send Request</h3>
+            <textarea id="messageInput" placeholder="Describe your issue..."></textarea>
+            <button class="send-button" onclick="sendRequest()">Send</button>
+            <button class="cancel-button" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    
+
+    <script>
+        function goBack() {
+            window.location.href = "search.html";  // Replace with the actual search page URL
+        }
+        
+        const peopleData = [
+            {
+                "fullname": "Jane Smith",
+                "technical_skills": ["java", "sql"],
+                "projects": ["Inventory Management System", "Banking App"]
+            },
+            {
+                "fullname": "Emily Johnson",
+                "technical_skills": ["html", "css"],
+                "projects": ["Portfolio Website", "Blog Platform"]
+            },
+            {
+                "fullname": "Michael Brown",
+                "technical_skills": ["react", "javascript"],
+                "projects": ["Social Media App", "Fitness Tracker"]
+            },
+            {
+                "fullname": "David Wilson",
+                "technical_skills": ["java", "python"],
+                "projects": ["HR Management System", "AI Voice Assistant"]
+            },
+            {
+                "fullname": "Sophia Martinez",
+                "technical_skills": ["sql", "php"],
+                "projects": ["Data Analysis Dashboard", "Online Exam Portal"]
+            },
+            {
+                "fullname": "Daniel Davis",
+                "technical_skills": ["c++", "java"],
+                "projects": ["3D Game Engine", "AR Game"]
+            },
+            {
+                "fullname": "Olivia Garcia",
+                "technical_skills": ["ruby", "python"],
+                "projects": ["Machine Learning Models", "Predictive Analytics"]
+            },
+            {
+                "fullname": "Lucas Lee",
+                "technical_skills": ["react", "javascript"],
+                "projects": ["Project Management Tool", "Chat Application"]
+            },
+            {
+                "fullname": "Isabella White",
+                "technical_skills": ["html", "css", "javascript"],
+                "projects": ["Personal Blog", "Photography Portfolio"]
+            },
+            {
+                "fullname": "Ava Clark",
+                "technical_skills": ["node.js", "express.js"],
+                "projects": ["Real-time Chat App", "Task Scheduler"]
+            },
+            {
+                "fullname": "Ethan Hall",
+                "technical_skills": ["python", "machine learning"],
+                "projects": ["Recommendation System", "Fraud Detection Tool"]
+            },
+            {
+                "fullname": "Charlotte King",
+                "technical_skills": ["python", "data analysis"],
+                "projects": ["Sales Forecasting", "Customer Segmentation"]
+            },
+            {
+                "fullname": "Liam Harris",
+                "technical_skills": ["java", "spring boot"],
+                "projects": ["E-Wallet System", "Job Portal"]
+            },
+            {
+                "fullname": "Amelia Scott",
+                "technical_skills": ["html", "javascript"],
+                "projects": ["Event Management Website", "Interactive Map"]
+            },
+            {
+                "fullname": "James Walker",
+                "technical_skills": ["react", "typescript"],
+                "projects": ["Task Manager App", "Expense Tracker"]
+            },
+            {
+                "fullname": "Mia Roberts",
+                "technical_skills": ["java", "kotlin"],
+                "projects": ["Ride Sharing App", "E-Learning Platform"]
+            },
+            {
+                "fullname": "Benjamin Allen",
+                "technical_skills": ["python", "django"],
+                "projects": ["Job Recruitment Platform", "Blogging System"]
+            },
+            {
+                "fullname": "Sophia Adams",
+                "technical_skills": ["php", "mysql"],
+                "projects": ["Inventory Control System", "Forum Application"]
+            },
+            {
+                "fullname": "Elijah Carter",
+                "technical_skills": ["python", "machine learning"],
+                "projects": ["Image Recognition Tool", "Sentiment Analysis"]
+            },
+            {
+                "fullname": "Harper Wilson",
+                "technical_skills": ["html", "css"],
+                "projects": ["Travel Blog", "Online Portfolio"]
+            },
+            {
+                "fullname": "Aiden Miller",
+                "technical_skills": ["c", "python"],
+                "projects": ["Scheduling App", "Budget Management Tool"]
+            },
+            {
+                "fullname": "Evelyn Young",
+                "technical_skills": ["node.js", "express.js"],
+                "projects": ["Weather API", "File Sharing System"]
+            },
+            {
+                "fullname": "Henry Ramirez",
+                "technical_skills": ["java", "angular"],
+                "projects": ["E-Commerce Portal", "Blogging Tool"]
+            },
+            {
+                "fullname": "Isabella Torres",
+                "technical_skills": ["c++", "java"],
+                "projects": ["2D Game Engine", "Simulation Game"]
+            },
+            {
+                "fullname": "Daniel Foster",
+                "technical_skills": ["python", "django"],
+                "projects": ["Event Booking System", "API Gateway"]
+            },
+            {
+                "fullname": "Grace Bell",
+                "technical_skills": ["html", "bootstrap"],
+                "projects": ["Fashion Blog", "Recipe Website"]
+            },
+            {
+                "fullname": "Samuel Edwards",
+                "technical_skills": ["java", "android"],
+                "projects": ["Health Tracker App", "News Aggregator"]
+            },
+            {
+                "fullname": "Olivia Martinez",
+                "technical_skills": ["angular", "typescript"],
+                "projects": ["E-Learning App", "Photo Sharing Platform"]
+            },
+            {
+                "fullname": "Noah Robinson",
+                "technical_skills": ["go", "kubernetes"],
+                "projects": ["Microservices Architecture", "CI/CD Pipeline"]
+            },
+            {
+                "fullname": "Ava Clark",
+                "technical_skills": ["html", "sass"],
+                "projects": ["Landing Page Designs", "Brand Portfolio"]
+            },
+            {
+                "fullname": "Lucas Wright",
+                "technical_skills": ["python", "tensorflow"],
+                "projects": ["Chatbot Development", "Object Detection"]
+            },
+            {
+                "fullname": "Emily Carter",
+                "technical_skills": ["javascript", "react"],
+                "projects": ["E-commerce Website", "Portfolio Site"]
+            },
+            {
+                "fullname": "Aiden Brown",
+                "technical_skills": ["java", "spring boot"],
+                "projects": ["Library Management System", "API Development"]
+            },
+            {
+                "fullname": "Sophia Taylor",
+                "technical_skills": ["c++", "opencv"],
+                "projects": ["Image Recognition", "Face Detection"]
+            },
+            {
+                "fullname": "Mia Anderson",
+                "technical_skills": ["html", "css", "bootstrap"],
+                "projects": ["Landing Page Design", "Blog Templates"]
+            },
+            {
+                "fullname": "Liam Harris",
+                "technical_skills": ["python", "django"],
+                "projects": ["Blog Application", "Inventory System"]
+            },
+            {
+                "fullname": "Olivia Martinez",
+                "technical_skills": ["sql", "postgresql"],
+                "projects": ["Employee Records System", "Data Migration Tool"]
+            },
+            {
+                "fullname": "Ethan Wilson",
+                "technical_skills": ["machine learning", "pytorch"],
+                "projects": ["Recommendation Engine", "Fraud Detection System"]
+            },
+            {
+                "fullname": "Isabella Thomas",
+                "technical_skills": ["ruby", "rails"],
+                "projects": ["Task Manager", "Online Voting System"]
+            },
+            {
+                "fullname": "Noah Lewis",
+                "technical_skills": ["angular", "typescript"],
+                "projects": ["Real-Time Chat App", "Event Booking System"]
+            },
+            {
+                "fullname": "Emma Robinson",
+                "technical_skills": ["node.js", "express.js"],
+                "projects": ["REST API Development", "Real-Time Notification System"]
+            } 
+        ];
+        
+        let currentPerson = null;
+        
+        function getSuggestions() {
+            const query = document.getElementById('queryInput').value.toLowerCase();
+            const suggestions = peopleData.filter(person =>
+                person.fullname.toLowerCase().includes(query) ||
+                person.technical_skills.some(skill => skill.toLowerCase().includes(query)) ||
+                person.projects.some(project => project.toLowerCase().includes(query))
+            );
+        
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = "";
+        
+            if (suggestions.length > 0) {
+                resultsDiv.innerHTML = suggestions.map(person => `
+                    <div class="card">
+                        <h3>${person.fullname}</h3>
+                        <p><strong>Technical Skills:</strong> ${person.technical_skills.join(", ")}</p>
+                        <p><strong>Projects:</strong> ${person.projects.join(", ")}</p>
+                        <button onclick="openModal('${person.fullname}')">Request</button>
+                    </div>
+                `).join('');
+            } else {
+                resultsDiv.innerHTML = `<p>No suggestions found for your query.</p>`;
+            }
+        }
+        
+        function openModal(personName) {
+            currentPerson = peopleData.find(person => person.fullname === personName);
+            document.getElementById('modal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        
+        function sendRequest() {
+            const message = document.getElementById('messageInput').value;
+            if (!message) {
+                alert("Please enter your problem!");
+                return;
+            }
+        
+            alert(`Your request has been sent to ${currentPerson.fullname}!`);
+            closeModal();
+        
+            // Simulating a notification back from the person
+            setTimeout(() => {
+                if (confirm(`${currentPerson.fullname} has accepted your request. Would you like to see their details?`)) {
+                    showPersonDetails(currentPerson);
+        
+                    // Wait for 5 seconds before redirecting to chatPage.html
+                    setTimeout(() => {
+                        window.location.href = `chatPage.html?user=${encodeURIComponent(currentPerson.fullname)}`;
+                    }, 5000);  // Delay of 5 seconds before redirect
+                }
+            }, 3000);  // Simulate the 3 seconds before showing the confirmation dialog
+        }
+        
+        function showPersonDetails(person) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="card">
+                    <h3>${person.fullname}</h3>
+                    <p><strong>Technical Skills:</strong> ${person.technical_skills.join(", ")}</p>
+                    <p><strong>Projects:</strong> ${person.projects.join(", ")}</p>
+                    <button onclick="startChat('${person.fullname}')">Chat Now</button>
+                </div>
+            `;
+        }
+        
+        function startChat(personName) {
+            // Here, we initiate the chat by redirecting to the chatPage.html page
+            window.location.href = `chatPage.html?user=${encodeURIComponent(personName)}`;
+        }
+    </script>    
+</body>
+</html>

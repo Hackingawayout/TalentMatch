@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Application</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon1.jpg" type="image/jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>AOS.init();</script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('internship_bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: rgb(2, 2, 2);
+            font-family: 'Roboto', sans-serif;
+        }
+    
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            color: white;
+        }
+    
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+    
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+    
+        .navbar h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+    
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 10px auto; /* Reduced margin */
+            padding: 20px;
+            background-color: rgba(149, 149, 149, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+    
+        .container h2 {
+            text-align: center;
+            margin-bottom: 10px; /* Adjusted spacing */
+        }
+    
+        #search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 5px auto; /* Reduced vertical margin */
+            max-width: 600px;
+        }
+    
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+    
+        input[type="text"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        }
+    
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px 40px; /* 40px horizontal space, 5px vertical space */
+            justify-content: space-between;
+        }
+    
+        .form-group {
+            flex: 1 1 45%;
+            margin-bottom: 10px; /* Reduced vertical space */
+        }
+    
+        .form-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            font-size: x-large;
+            font-weight: 100;
+            color: rgb(0, 0, 0);
+        }
+    
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            background-color: #f8f9fa;
+            color: #495057;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+    
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+    
+        .form-group button {
+            background-color: #567acb;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+    
+        .form-group button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+    
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .companies-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .company-card {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+        }
+        
+        .company-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .company-card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.5em;
+        }
+        
+        .company-card p {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #666;
+        }
+        
+        .company-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .company-card a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <h1>TalentMatch</h1>
+        <a href="logout.html">Logout</a>
+    </div>
+
+    <div id="search-container">
+        <input type="text" id="company-input" placeholder="Enter company name" oninput="showSuggestions()">
+        <button onclick="checkInternship()">Search</button>
+    </div>
+    <ul id="suggestions" class="suggestions"></ul>
+
+    <div id="result"></div>
+
+    <div id="result"></div>
+    <!-- Main Container -->
+    <div class="container">
+        <h2>Internship Application</h2>
+
+        <!-- Internship Application Form -->
+        <form id="internship-form">
+            <div class="form-container">
+                <!-- Personal Information Section -->
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full-name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="Enter LinkedIn profile URL (optional)">
+                </div>
+
+                <!-- Internship Preferences Section -->
+                <div class="form-group">
+                    <label for="location">Location of Interest</label>
+                    <select id="location" name="location" required>
+                        <option value="remote">Remote</option>
+                        <option value="onsite">On-site</option>
+                        <option value="specific-cities">Specific Cities</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="job-area">Job Area</label>
+                    <select id="job-area" name="job-area" required>
+                        <option value="web-development">Web Development</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="data-science">Data Science</option>
+                        <option value="design">Design</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="internship-duration">Preferred Internship Duration</label>
+                    <select id="internship-duration" name="internship-duration" required>
+                        <option value="3-months">3 Months</option>
+                        <option value="6-months">6 Months</option>
+                        <option value="full-time">Full Time</option>
+                    </select>
+                </div>
+
+                <!-- Resume Upload Section -->
+                <div class="form-group">
+                    <label for="resume">Upload Resume (PDF, DOC, DOCX)</label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cover-letter">Upload Cover Letter (Optional)</label>
+                    <input type="file" id="cover-letter" name="cover-letter" accept=".pdf,.doc,.docx">
+                </div>
+
+                <div class="form-group">
+                    <label for="additional-documents">Upload Additional Documents (Optional)</label>
+                    <input type="file" id="additional-documents" name="additional-documents" accept=".pdf,.doc,.docx">
+                </div>
+
+                <!-- Skills Section -->
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <select id="skills" name="skills" required>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="html-css">HTML & CSS</option>
+                        <option value="react">React</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location of Interest</label>
+                    <select id="location" name="location" required>
+                        <option value="remote">Remote</option>
+                        <option value="onsite">On-site</option>
+                        <option value="specific-cities">Specific Cities</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="job-area">Job Area</label>
+                    <select id="job-area" name="job-area" multiple required>
+                        <option value="web-development">Web Development</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="data-science">Data Science</option>
+                        <option value="design">Design</option>
+                        <option value="sales">Sales</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="internship-duration">Preferred Internship Duration</label>
+                    <select id="internship-duration" name="internship-duration" required>
+                        <option value="3-months">3 Months</option>
+                        <option value="6-months">6 Months</option>
+                        <option value="full-time">Full Time</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit"><i class="fas fa-check-circle"></i> Submit Application</button>
+                </div>
+            </div>
+        </form>        
+        </div>
+        <div id="spinner" style="display: none;">Loading...</div>
+        <button class="back-button" onclick="goBack()">Back to Search</button>
+
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 TalentMatch. All rights reserved.</p>
+        <p>
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </div>
+
+    <script>
+        const companiesOfferingInternships = [
+            "Google", "Microsoft", "Apple", "Amazon", "Facebook", "IBM", "Intel", "Adobe", "Netflix", "Tesla",
+            "LinkedIn", "Salesforce", "Twitter", "Oracle", "SAP", "Cisco", "HP", "Dell", "Zoom", "Uber",
+            "Spotify", "Red Hat", "Qualcomm", "Nvidia", "Snapchat", "Pinterest", "Dropbox", "Shopify", "GitHub", "Slack",
+            "VMware", "Airbnb", "Stripe", "Square", "PayPal", "Coinbase", "TikTok", "Alibaba", "Baidu", "Tencent","Meta","MasterCard","Infosys",
+            "TCS","openAI","Baidu","SpaceX","Google AI"
+        ];
+
+        function checkInternship() {
+            const input = document.getElementById("company-input").value.trim();
+            const resultDiv = document.getElementById("result");
+        
+            if (input === "") {
+                resultDiv.innerHTML = "<p>Please enter a company name.</p>";
+                return;
+            }
+        
+            const isOffering = companiesOfferingInternships.includes(input);
+        
+            if (isOffering) {
+                const companyDetails = {
+                        "Google": {
+                            img: "google.jpg",
+                            title: "Google",
+                            description: "Internship in Technology",
+                            link: "https://google.com/"
+                        },
+                        "Microsoft": {
+                            img: "microsoft.jpg",
+                            title: "Microsoft",
+                            description: "Internship in Software Development",
+                            link: "https://microsoft.com/"
+                        },
+                        "Apple": {
+                            img: "apple.jpg",
+                            title: "Apple",
+                            description: "Internship in Innovation",
+                            link: "https://apple.com/"
+                        },
+                        "Amazon": {
+                            img: "amazon.jpg",
+                            title: "Amazon",
+                            description: "Internship in E-commerce",
+                            link: "https://amazon.com/"
+                        },
+                        "Facebook": {
+                            img: "facebook.jpg",
+                            title: "Facebook",
+                            description: "Internship in Social Media",
+                            link: "https://facebook.com/"
+                        },
+                        "IBM": {
+                            img: "ibm.jpg",
+                            title: "IBM",
+                            description: "Internship in AI and Cloud Computing",
+                            link: "https://ibm.com/"
+                        },
+                        "Intel": {
+                            img: "intel.jpg",
+                            title: "Intel",
+                            description: "Internship in Semiconductor Technology",
+                            link: "https://intel.com/"
+                        },
+                        "Adobe": {
+                            img: "adobe.jpg",
+                            title: "Adobe",
+                            description: "Internship in Creative Cloud Solutions",
+                            link: "https://adobe.com/"
+                        },
+                        "Netflix": {
+                            img: "netflix.jpg",
+                            title: "Netflix",
+                            description: "Internship in Entertainment Technology",
+                            link: "https://netflix.com/"
+                        },
+                        "Tesla": {
+                            img: "tesla.jpg",
+                            title: "Tesla",
+                            description: "Internship in Sustainable Energy",
+                            link: "https://tesla.com/"
+                        },
+                        "LinkedIn": {
+                            img: "linkedin.jpg",
+                            title: "LinkedIn",
+                            description: "Internship in Professional Networking",
+                            link: "https://linkedin.com/"
+                        },
+                        "Salesforce": {
+                            img: "salesforce.jpg",
+                            title: "Salesforce",
+                            description: "Internship in CRM Solutions",
+                            link: "https://salesforce.com/"
+                        },
+                        "Twitter": {
+                            img: "twitter.jpg",
+                            title: "Twitter",
+                            description: "Internship in Social Networking",
+                            link: "https://twitter.com/"
+                        },
+                        "Oracle": {
+                            img: "oracle.jpg",
+                            title: "Oracle",
+                            description: "Internship in Database Management",
+                            link: "https://oracle.com/"
+                        },
+                        "SAP": {
+                            img: "sap.jpg",
+                            title: "SAP",
+                            description: "Internship in Enterprise Software",
+                            link: "https://sap.com/"
+                        },
+                        "Cisco": {
+                            img: "cisco.jpg",
+                            title: "Cisco",
+                            description: "Internship in Networking",
+                            link: "https://cisco.com/"
+                        },
+                        "HP": {
+                            img: "hp.jpg",
+                            title: "HP",
+                            description: "Internship in Computing Solutions",
+                            link: "https://hp.com/"
+                        },
+                        "Dell": {
+                            img: "dell.jpg",
+                            title: "Dell",
+                            description: "Internship in IT Infrastructure",
+                            link: "https://dell.com/"
+                        },
+                        "Zoom": {
+                            img: "zoom.jpg",
+                            title: "Zoom",
+                            description: "Internship in Communication Technology",
+                            link: "https://zoom.us/"
+                        },
+                        "Uber": {
+                            img: "uber.jpg",
+                            title: "Uber",
+                            description: "Internship in Ride Sharing",
+                            link: "https://uber.com/"
+                        },
+                        "Spotify": {
+                            img: "spotify.jpg",
+                            title: "Spotify",
+                            description: "Internship in Music Streaming",
+                            link: "https://spotify.com/"
+                        },
+                        "Red Hat": {
+                            img: "redhat.jpg",
+                            title: "Red Hat",
+                            description: "Internship in Open Source Solutions",
+                            link: "https://redhat.com/"
+                        },
+                        "Qualcomm": {
+                            img: "qualcomm.jpg",
+                            title: "Qualcomm",
+                            description: "Internship in Wireless Technology",
+                            link: "https://qualcomm.com/"
+                        },
+                        "Nvidia": {
+                            img: "nvidia.jpg",
+                            title: "Nvidia",
+                            description: "Internship in Graphics Processing",
+                            link: "https://nvidia.com/"
+                        },
+                        "Snapchat": {
+                            img: "snapchat.jpg",
+                            title: "Snapchat",
+                            description: "Internship in Multimedia Technology",
+                            link: "https://snapchat.com/"
+                        },
+                        "Pinterest": {
+                            img: "pinterest.jpg",
+                            title: "Pinterest",
+                            description: "Internship in Creative Social Media",
+                            link: "https://pinterest.com/"
+                        },
+                        "Dropbox": {
+                            img: "dropbox.jpg",
+                            title: "Dropbox",
+                            description: "Internship in Cloud Storage",
+                            link: "https://dropbox.com/"
+                        },
+                        "Shopify": {
+                            img: "shopify.jpg",
+                            title: "Shopify",
+                            description: "Internship in E-commerce Platforms",
+                            link: "https://shopify.com/"
+                        },
+                        "GitHub": {
+                            img: "github.jpg",
+                            title: "GitHub",
+                            description: "Internship in Version Control",
+                            link: "https://github.com/"
+                        },
+                        "Slack": {
+                            img: "slack.jpg",
+                            title: "Slack",
+                            description: "Internship in Workplace Collaboration",
+                            link: "https://slack.com/"
+                        },
+                        "VMware": {
+                            img: "vmware.jpg",
+                            title: "VMware",
+                            description: "Internship in Virtualization",
+                            link: "https://vmware.com/"
+                        },
+                        "Airbnb": {
+                            img: "airbnb.jpg",
+                            title: "Airbnb",
+                            description: "Internship in Hospitality Technology",
+                            link: "https://airbnb.com/"
+                        },
+                        "Stripe": {
+                            img: "stripe.jpg",
+                            title: "Stripe",
+                            description: "Internship in Payment Processing",
+                            link: "https://stripe.com/"
+                        },
+                        "Square": {
+                            img: "square.jpg",
+                            title: "Square",
+                            description: "Internship in Financial Technology",
+                            link: "https://square.com/"
+                        },
+                        "PayPal": {
+                            img: "paypal.jpg",
+                            title: "PayPal",
+                            description: "Internship in Digital Payments",
+                            link: "https://paypal.com/"
+                        },
+                        "Coinbase": {
+                            img: "coinbase.jpg",
+                            title: "Coinbase",
+                            description: "Internship in Cryptocurrency",
+                            link: "https://coinbase.com/"
+                        },
+                        "TikTok": {
+                            img: "tiktok.jpg",
+                            title: "TikTok",
+                            description: "Internship in Video Sharing",
+                            link: "https://tiktok.com/"
+                        },
+                        "Alibaba": {
+                            img: "alibaba.jpg",
+                            title: "Alibaba",
+                            description: "Internship in Global Commerce",
+                            link: "https://alibaba.com/"
+                        },
+                        "Baidu": {
+                            img: "baidu.jpg",
+                            title: "Baidu",
+                            description: "Internship in Internet Services",
+                            link: "https://baidu.com/"
+                        },
+                        "Tencent": {
+                            img: "tencent.jpg",
+                            title: "Tencent",
+                            description: "Internship in Digital Entertainment",
+                            link: "https://tencent.com/"
+                        },
+                        "Meta": {
+                            img: "meta.jpg",
+                            title: "Meta",
+                            description: "Internship in Social Media and VR",
+                            link: "https://meta.com/"
+                        },
+                        "MasterCard": {
+                            img: "mastercard.jpg",
+                            title: "MasterCard",
+                            description: "Internship in Payment Processing",
+                            link: "https://mastercard.com/"
+                        },
+                        "Infosys": {
+                            img: "infosys.jpg",
+                            title: "Infosys",
+                            description: "Internship in IT Services",
+                            link: "https://infosys.com/"
+                        },
+                        "TCS": {
+                            img: "tcs.jpg",
+                            title: "TCS",
+                            description: "Internship in Consulting Services",
+                            link: "https://tcs.com/"
+                        },
+                        "openAI": {
+                            img: "openai.jpg",
+                            title: "OpenAI",
+                            description: "Internship in Artificial Intelligence",
+                            link: "https://openai.com/"
+                        },
+                        "Google AI": {
+                            img: "googleai.jpg",
+                            title: "Google AI",
+                            description: "Internship in AI Research",
+                            link: "https://ai.google/"
+                        }
+                };
+        
+                const resultDiv = document.getElementById("result");
+
+                if (companyDetails[input]) {
+                    const { img, title, description, link } = companyDetails[input];
+                    resultDiv.innerHTML = `
+                        <div class="company-card">
+                            <img src="${img}" alt="${title} Logo">
+                            <h3>${title}</h3>
+                            <p>${description}</p>
+                            <a href="${link}">Apply Now</a>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = "<p>Company details are not available.</p>";
+                }
+            } else {
+                resultDiv.innerHTML = `<p>${input} is not offering any internships (Unavailable).</p>`;
+            }
+        }
+        
+
+        function showSuggestions() {
+            const input = document.getElementById("company-input").value.trim().toLowerCase();
+            const suggestionsList = document.getElementById("suggestions");
+
+            if (input === "") {
+                suggestionsList.style.display = "none";
+                return;
+            }
+
+            const filteredCompanies = companiesOfferingInternships.filter(company =>
+                company.toLowerCase().startsWith(input)
+            );
+
+            suggestionsList.innerHTML = filteredCompanies.map(company => `<li onclick="selectSuggestion('${company}')">${company}</li>`).join("");
+            suggestionsList.style.display = filteredCompanies.length > 0 ? "block" : "none";
+        }
+
+        function selectSuggestion(company) {
+            document.getElementById("company-input").value = company;
+            document.getElementById("suggestions").style.display = "none";
+        }
+    </script>
+        
+    <script>
+        function goBack() {
+            window.location.href = "search.html";  // Replace with the actual search page URL
+        }
+        
+
+        document.querySelector('#internship-form').addEventListener('submit', function() {
+            document.querySelector('#spinner').style.display = 'block';
+        });
+
+        document.getElementById('internship-form').addEventListener('submit', function(event) {
+            const email = document.getElementById('email').value;
+            if (!email.includes('@')) {
+                alert('Please enter a valid email address!');
+                event.preventDefault();
+            }
+        });
+
+        const jobArea = document.getElementById('job-area');
+        const internships = {
+            "web-development": ["Frontend", "Backend", "Fullstack"],
+            "marketing": ["Digital Marketing", "SEO", "Content Writing"],
+        };
+        document.getElementById('location').addEventListener('change', function() {
+            const selected = this.value;
+            jobArea.innerHTML = internships[selected].map(option => `<option value="${option}">${option}</option>`).join('');
+        });
+
+        document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+        
+    </script>
+
+</body>
+</html>

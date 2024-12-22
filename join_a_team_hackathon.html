@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join a Team for Hackathon</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon1.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('hackathon_bg.jpg'); /* Replace with your actual image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            color: blue;
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            justify-content: center; /* Centers the search bar horizontally */
+            margin-bottom: 20px;
+        }
+
+        .search-bar input, .search-bar select, .search-bar button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-bar button {
+            background-color: #567acb;
+            color: white;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #3456a1;
+        }
+
+        /* Grid Layout for Cards */
+        .team-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .team-card {
+            background-color: rgba(0, 0, 0, 0.8); /* Black color with slight transparency */
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white; /* Ensure text remains readable */
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .team-card h3 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .team-card p {
+            margin: 10px 0;
+        }
+
+        .team-card button {
+            background-color: #567acb;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .team-card button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+
+        .team-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            /*padding: 10px 0;*/
+            height: 50px;
+            margin-top: 143px;
+            /*padding-top: 150px;*/
+        }
+
+        .footer a {
+            color: #567acb;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            background-color: #567acb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="search.html">Home</a>
+        <h1>TalentMatch</h1>
+        <a href="home.html">Logout</a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1>Join a Team for Hackathon</h2>
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search by hackathon name or skills..." id="search-input">
+            <select id="filter-category">
+                <option value="">All Categories</option>
+                <option value="technology">Technology</option>
+                <option value="design">Design</option>
+                <option value="ai">AI/ML</option>
+            </select>
+            <button onclick="searchTeams()">Search</button>
+        </div>
+
+        <!-- Team Cards in Grid -->
+        <div class="team-list">
+            <div class="team-card">
+                <img src="IITH.jpg" alt="Team Innovators Image">
+                <h3>Team Innovators</h3>
+                <p><strong>Hackathon:</strong> Tech Sprint 2024</p>
+                <p><strong>College:</strong> Indian Institute of Technology Hyderabad</p>
+                <p><strong>Description:</strong> Building a real-time AI chatbot for customer service.</p>
+                <p><strong>Skills Required:</strong> Python, Machine Learning</p>
+                <p><strong>Team Size:</strong> 4/6</p>
+                <button onclick="joinTeam('Team Innovators')">Request to Join</button>
+            </div>
+            <div class="team-card">
+                <img src="JNTUH.jpg" alt="Code Warriors Image">
+                <h3>Code Warriors</h3>
+                <p><strong>Hackathon:</strong> DevBuild Challenge</p>
+                <p><strong>College:</strong> Jawaharlal Nehru Technological University Hyderabad</p>
+                <p><strong>Description:</strong> Developing a peer-to-peer carpooling app.</p>
+                <p><strong>Skills Required:</strong> JavaScript, Node.js</p>
+                <p><strong>Team Size:</strong> 3/5</p>
+                <button onclick="joinTeam('Code Warriors')">Request to Join</button>
+            </div>
+            <div class="team-card">
+                <img src="OU.jpg" alt="Pixel Pioneers Image">
+                <h3>Pixel Pioneers</h3>
+                <p><strong>Hackathon:</strong> UI/UX Designathon</p>
+                <p><strong>College:</strong> Osmania University</p>
+                <p><strong>Description:</strong> Designing an intuitive interface for a financial app.</p>
+                <p><strong>Skills Required:</strong> Figma, Adobe XD</p>
+                <p><strong>Team Size:</strong> 2/4</p>
+                <button onclick="joinTeam('Pixel Pioneers')">Request to Join</button>
+            </div>
+            <div class="team-card">
+                <img src="IIITH.jpg" alt="Data Visionaries Image">
+                <h3>Data Visionaries</h3>
+                <p><strong>Hackathon:</strong> Data Hack 2024</p>
+                <p><strong>College:</strong> International Institute of Information Technology Hyderabad</p>
+                <p><strong>Description:</strong> Predicting stock market trends using historical data.</p>
+                <p><strong>Skills Required:</strong> R, Data Science</p>
+                <p><strong>Team Size:</strong> 5/7</p>
+                <button onclick="joinTeam('Data Visionaries')">Request to Join</button>
+            </div>
+        </div>
+        
+        <!-- Back to Search Button -->
+        <button class="back-button" onclick="goBack()">Back to Search</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 TalentMatch. All rights reserved.</p>
+        <p>
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "search.html";  // Replace with the actual search page URL
+        }
+
+        function joinTeam(teamName) {
+            alert("You have requested to join " + teamName);
+        }
+
+        function searchTeams() {
+            let searchInput = document.getElementById('search-input').value.toLowerCase();
+            let filterCategory = document.getElementById('filter-category').value.toLowerCase();
+            // Logic for filtering the teams based on the search input and category
+            console.log("Search input: " + searchInput);
+            console.log("Filter category: " + filterCategory);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Project</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="public/images/favicon1.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+            background-image: url('public/images/project_bg.jpg'); /* Replace with your actual image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background-color: rgb(200, 190, 0);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            background-color: #567acb;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-buttons button {
+            width: 48%;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            margin-top: auto; /* This pushes the footer to the bottom of the page */
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            background-color: #567acb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="home.html">Home</a>
+        <h1>TalentMatch</h1>
+        <a href="logout.html">Logout</a>
+    </div>
+
+    <!-- Form Container -->
+    <div class="container">
+        <h2>Create a New Project</h2>
+        <form id="create-project-form">
+            <label for="project-name">Project Name *</label>
+            <input type="text" id="project-name" name="project-name" placeholder="Enter project name" required>
+
+            <label for="project-description">Project Description *</label>
+            <textarea id="project-description" name="project-description" rows="4" placeholder="Enter a brief description of the project" required></textarea>
+
+            <label for="category">Category *</label>
+            <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="technology">Technology</option>
+                <option value="marketing">Marketing</option>
+                <option value="design">Design</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="skills">Skills Required *</label>
+            <input type="text" id="skills" name="skills" placeholder="e.g., JavaScript, Python, Design" required>
+
+            <label for="duration">Project Duration *</label>
+            <input type="date" id="start-date" name="start-date" placeholder="Start Date" required>
+            <input type="date" id="end-date" name="end-date" placeholder="End Date" required>
+
+            <label for="team-size">Team Size *</label>
+            <input type="number" id="team-size" name="team-size" min="1" placeholder="Enter team size" required>
+
+            <div class="form-buttons">
+                <button type="reset">Reset</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <button class="back-button" onclick="goBack()">Back to Search</button>
+    <div class="footer">
+        <p>&copy; 2024 TalentMatch. All rights reserved.</p>
+        <p>
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </div>
+
+    <script>
+
+        function goBack() {
+            window.location.href = "search.html";  // Replace with the actual search page URL
+        }
+        document.getElementById("create-project-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Project submitted successfully!");
+            // Add form submission logic here
+        });
+    </script>
+</body>
+</html>

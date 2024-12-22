@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join a Project</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon1.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url('project_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: rgb(255, 255, 255);    
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 10px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .main-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .search-filter {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-filter input,
+        .search-filter select,
+        .search-filter button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-filter input {
+            flex: 2;
+        }
+
+        .search-filter select {
+            flex: 1;
+        }
+
+        .search-filter button {
+            flex: 0.5;
+            background-color: #567acb;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-filter button:hover {
+            background-color: #3456a1;
+        }
+
+        .project-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            width: 300px;
+            height: 250px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-description {
+            font-size: 14px;
+        }
+
+        .card-buttons {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .card-buttons button,
+        .view-more-button,
+        .join-now-button {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            background-color: #567acb;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .card-buttons button:hover,
+        .view-more-button:hover,
+        .join-now-button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+
+        .back-to-search-button {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #567acb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-to-search-button:hover {
+            background-color: #3456a1;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .footer a {
+            color: #567acb;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="search.html">Home</a>
+        <h1>TalentMatch</h1>
+        <a href="home.html">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <h2>Join a Project</h2>
+        <p>Browse and find exciting projects to collaborate on.</p>
+
+        <!-- Search and Filter -->
+        <div class="search-filter">
+            <input type="text" placeholder="Search projects...">
+            <select>
+                <option value="">Category</option>
+                <option value="technology">Technology</option>
+                <option value="marketing">Marketing</option>
+                <option value="design">Design</option>
+            </select>
+            <button>Search</button>
+        </div>
+
+        <!-- Project Cards -->
+        <div class="project-cards">
+            <!-- Example Card 1 -->
+            <div class="card">
+                <img src="chatBot.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">AI Chatbot Development</div>
+                    <div class="card-description">
+                        Collaborate on building an AI chatbot for customer service.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="ChatBot.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Card 2 -->
+            <div class="card">
+                <img src="New_web_app.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">Web App for Productivity</div>
+                    <div class="card-description">
+                        Build a web app to help users track their daily tasks.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="Web_App_for_Productivity.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Card 3 -->
+            <div class="card">
+                <img src="health_app.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">Health Monitoring App</div>
+                    <div class="card-description">
+                        Develop an app to monitor vital health parameters.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="health_monitoring_app.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Card 4 -->
+            <div class="card">
+                <img src="ecommerce.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">E-commerce Platform</div>
+                    <div class="card-description">
+                        Help design a scalable e-commerce platform for small businesses.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="ecommerce.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Card 5 -->
+            <div class="card">
+                <img src="education_tool.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">Educational Tool</div>
+                    <div class="card-description">
+                        Work on an interactive tool for e-learning platforms.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="education_tool.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Card 6 -->
+            <div class="card">
+                <img src="finance_tracker.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">Personal Finance Tracker</div>
+                    <div class="card-description">
+                        Create a tool to manage personal expenses and budgets.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="finance_tracker.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Card 7 -->
+            <div class="card">
+                <img src="travel_planner.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">Travel Planner</div>
+                    <div class="card-description">
+                        Build a travel planner app to organize trips efficiently.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="travel_planner.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Card 8 -->
+            <div class="card">
+                <img src="music_streaming.jpg" alt="Project Image">
+                <div class="card-content">
+                    <div class="card-title">Music Streaming Service</div>
+                    <div class="card-description">
+                        Join a team to create a new music streaming platform.
+                    </div>
+                    <div class="card-buttons">
+                        <a href="music_streaming.html" class="view-more-button">View More</a>
+                        <a href="join-project-form.html" class="join-now-button">Join Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Search Button -->
+        <a href="search.html" class="back-to-search-button">Back to Search</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 TalentMatch. All rights reserved.</p>
+        <p>
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </div>
+</body>
+</html>

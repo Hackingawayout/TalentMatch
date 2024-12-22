@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Project</title>
+    <link rel="icon" href="favicon1.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-container h1 {
+            color: #3456a1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: #567acb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #3456a1;
+        }
+
+        .success-message {
+            text-align: center;
+            color: green;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Join Project</h1>
+        <form id="joinForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message">Why do you want to join?</label>
+            <textarea id="message" name="message" rows="4" placeholder="Explain why you are interested..." required></textarea>
+
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="success-message" id="successMessage" style="display: none;">
+            Request updated!
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission
+        const form = document.getElementById('joinForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+
+            // Simulate form submission
+            setTimeout(() => {
+                successMessage.style.display = 'block'; // Show the success message
+                form.reset(); // Reset the form fields
+
+                // Redirect to join_a_project.html after 10 seconds
+                setTimeout(() => {
+                    window.location.href = 'join_a_project.html';
+                }, 1000); // 10 seconds = 10000 milliseconds
+            }, 500); // Initial delay to simulate processing time
+        });
+    </script>
+</body>
+</html>
