@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Match</title>
+  <script src="https://kit.fontawesome.com/330279e226.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.agora.io/sdk/web/AgoraRTC_N-4.22.2.js"></script>
+  <link rel="icon" href="favicon1.jpg" type="image/jpg">
+  <style>
+    /* Existing styles */
+    * {
+      padding: 0px;
+      margin: 0px;
+      box-sizing: border-box;
+    }
+    body {
+      background-image: url("bg.png");
+    }
+    .heading{
+        text-align: center;
+        text-shadow: 5px;
+        padding-top: 0px;
+        margin: 0px;
+    }   
+    h1 {
+        font-family: "Algerian", sans-serif;
+        text-align: center;
+        margin: 20px 0;
+        /* font-size: 3em; */
+        color: #333;
+        font-weight: bold;
+    }
+    .tagline{
+        text-align: center;
+    }
+    /* Navbar */
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:10px;
+        color: white;
+        padding: 10px; 
+        background-color: burlywood;
+    }
+    .button{
+        display: flex;
+        justify-content: right;
+        margin-left: 10px;
+    
+    }
+    .navbar button{
+        background-color: aquamarine;
+        margin-right:10px;
+        box-sizing:content-box ;
+    }
+    .navbar a {
+        color: black;
+        text-decoration: none;
+        margin: 0 10px; /* Adds space around all navbar links */
+    }
+    
+    .navbar a i {
+        margin-right: 8px; /* Adds space between the icon and the text */
+    }
+    
+    
+    .navbar a:last-child {
+        margin-left: 20px; /* Adds extra space between Login and Register links */
+    }
+    
+    
+    .scroll-text {
+        width: 100%;
+        position: relative;
+        background-color: #769dc5;
+        color: #000;
+        padding: 10px 0;
+        font-size: 18px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    section, .content, .about-container, .how-to-proceed, .choose_us {
+        height: 100vh;
+    }
+    
+    .scroll-text span {
+        display: inline-block;
+        animation: scroll 20s linear infinite; 
+    }
+    @keyframes scroll {
+        from {
+            transform: translateX(100%); 
+        }
+        to {
+            transform: translateX(-100%); 
+        }
+    }
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: auto;
+    }
+
+    .images img, .workflow-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .about-container, .steps {
+        flex-wrap: wrap;
+    }
+    
+    .content{
+        align-items: center;
+        display: flex;
+        margin-top: 10px;
+        width: auto;
+    }
+    
+    /* About us */
+    
+    .about-container {
+        display: flex; /* Enables horizontal alignment */
+        justify-content: space-between; /* Adds space between the sections */
+        align-items: stretch; /* Aligns items vertically to fill the container */
+        gap: 20px; /* Space between the two sections */
+        padding: 20px;
+        flex-wrap: nowrap; /* Prevents items from wrapping to the next line */
+        height: 750px; /* Ensures uniform height for both sections */
+        margin-top: 60px;
+        padding-top: 10px;
+    }
+    
+    .scrollable-about {
+        flex: 1; /* Allows the section to take equal space */
+        max-width: 50%; /* Ensures both sections share the available width equally */
+        overflow-y: auto; /* Enables vertical scrolling */
+        height: 100%; /* Matches the height of the container */
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: bisque;
+    }
+    
+    .scrollable-about::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .scrollable-about::-webkit-scrollbar-thumb {
+        background-color: #999;
+        border-radius: 10px;
+    }
+    
+    .scrollable-about::-webkit-scrollbar-thumb:hover {
+        background-color: #666;
+    }
+    
+    .scrollable-about::-webkit-scrollbar-track {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+    }
+    
+    .scroll {
+        flex: 1; /* Allows the section to take equal space */
+        max-width: 50%; /* Ensures both sections share the available width equally */
+        overflow: hidden; /* Hides overflow content */
+        position: relative;
+        height: 100%; /* Matches the height of the container */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .images {
+        display: flex;
+        flex-direction: column;
+        animation: scroll 10s linear infinite; /* Scroll animation */
+    }
+    
+    .scroll img {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    
+    .images:hover {
+        animation-play-state: paused; /* Pause animation on hover */
+    }
+    
+    @keyframes scroll {
+        0% {
+            transform: translateY(100);
+        }
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+    
+    /* How to proceed */
+    .how-to-proceed h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2em;
+        color: #333;
+       
+    }
+    
+    .steps {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .step-list {
+        flex: 2;
+        padding: 10px;
+    }
+    
+    .step-list h1 {
+        margin-bottom: 5px;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #010101;
+        text-align: left; /* Aligns the headings to the left */
+        padding-top: 20px;
+    }
+    
+    .step-list p {
+        margin-left: 30px;
+        font-size: 1.2em;
+        color: #000000;
+        line-height: 1.6;
+    }
+    
+    .workflow-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 30px; /* Further reduced padding for more space */
+        position: relative;
+        height: 140%; /* Increase container height beyond 100% */
+        width: 140%; /* Increase container width beyond 100% */
+        transform: translateX(-20%); /* Move the container 10% to the left */
+    }
+    
+    .workflow-image img {
+        width: 160%; /* Further increase the image size */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure the image scales correctly */
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow for effect */
+    }
+    
+    /* Why choose us */
+    
+    #why-choose-us{
+        font-size: 100px;
+        padding-top: 90px;
+        margin-top: 50px;
+    }
+    
+    .choose_us {
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+        background-color: transparent;
+        
+        
+    }
+    
+    .container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: nowrap; /* Keeps the cards in a single row */
+        max-width: 100%;
+    }
+    
+    .card_choose {
+        position: relative;
+        width: 3000px;
+        height: 600px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        background-color: white;
+    }
+    
+    .card_choose:hover .info {
+        opacity: 1; /* Ensure the original content remains visible */
+    }
+    
+    .card_choose .more-info {
+        opacity: 1; /* Ensure the additional information is always visible */
+        transform: none; /* Prevent movement on hover */
+    }
+    
+    .card_choose:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card_choose img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+        transition: transform 0.3s ease;
+    }
+    
+    .card_choose:hover img {
+        transform: scale(1.1); /* Zooms in the image slightly on hover */
+    }
+    
+    .card_choose .info {
+        padding: 20px;
+        text-align: center;
+    }
+
+    
+    
+    .card_choose h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .card_choose p {
+        font-size: 1em;
+        color: #555;
+        line-height: 1.6;
+    }
+    
+    .more-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .card_choose:hover .info {
+        opacity: 1; /* Ensure the original content remains visible */
+    }
+    
+    .card_choose .more-info {
+        background: rgba(255, 255, 255, 1); /* Change background to solid white */
+        color: #000; /* Change text color to black for readability */
+        text-align: center;
+        padding: 20px;
+        opacity: 1; /* Ensure it's visible */
+        transform: none; /* Prevent movement */
+        border-radius: 10px; /* Optional: soften corners */
+    }
+    
+    
+    
+    .card_choose .info, .card_choose:hover .more-info {
+        transition: opacity 0.3s ease;
+    }
+    
+    
+    /* FAQ'S */
+    .head{
+        padding-top: 165px;
+        margin-top: 10px;
+    }
+    .Cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px 50px; /* Adds space between grid items */
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .flip-Cards {
+        margin: 10px; /* Adds additional margin around each Cards */
+        perspective: 1000px;
+    }
+    
+    .Cards {
+        width: 100%;
+        height: 200px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+        cursor: pointer;
+    }
+    
+    .Cards.flip {
+        transform: rotateY(180deg);
+    }
+    
+    .Cards-front, .Cards-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .Cards-front {
+        background-color: #ffffff;
+        color: #333;
+    }
+    
+    .Cards-back {
+        background: linear-gradient(135deg, #5694cb, #6cee7f); /* Gradient from blue to light blue */
+        color: white;
+        transform: rotateY(180deg);
+        text-align: center; /* Center-align text */
+    }
+    
+    
+    @media screen and (max-width: 600px) {
+        .Cards-container {
+            grid-template-columns: 1fr;
+    }
+    }
+    .footer {
+        background-color: #2d2c2c; 
+        padding: 8px 0;          
+        text-align: center;      
+        border-top: 1px solid #ddd; 
+        color: white;
+    }
+    @media screen and (max-width: 600px) {
+        .card-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Agora video containers */
+    #local-player, #remote-player {
+      width: 600px;
+      height: 400px;
+      background-color: black;
+      margin: 10px auto;
+    }
+    #video-call-controls {
+      text-align: center;
+      margin-top: 10px;
+    }
+    #video-call-controls button {
+      margin: 5px;
+      padding: 10px;
+      background-color: aquamarine;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="#"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="#"><i class="fa-solid fa-address-card"></i> About Us</a>
+    <a href="#"><i class="fa fa-fw fa-bullhorn"></i> Features</a>
+    <a href="#"><i class="fa-solid fa-question-circle"></i> Have more questions?</a>
+    <a href="login.html"><i class="fa-solid fa-right-to-bracket"></i>Login</a>
+    <a href="register.html"><i class="fa-regular fa-registered"></i>Register</a>
+  </div>
+
+  
+
+  <div class="scroll-text" style="font-size: 25px;">
+    <span>Welcome to TALENT Match -Empowering collaboration by connecting individuals with shared skills and expertise to achieve goals and solve challenges seamlessly ! </span>
+</div>
+
+    <h1 class="heading" style="font-size: 100px;">Welcome to TALENT Match</h1>
+    <h4 class="tagline" style="font-size: 60px;">Where questions meet expertise</h4>
+
+<div class="content">
+  <video class="play" autoplay loop muted>
+    <source src="intro_video.mp4" type="video/mp4">
+  </video>
+</div>
+
+
+<!-- About us -->
+<div class="about-container">
+    <div class="scrollable-about">
+        <div class="about">
+            <h1>About Us</h1>
+            <p >"Welcome to TALENT Match – a platform designed to connect individuals with the expertise and skills you need."</p>
+        </div>
+        <div class="about">
+            <h1>Our Mission</h1>
+            <p>Our mission is to empower individuals and organizations by fostering meaningful collaborations and connections based on skills, expertise, and passion.</p>
+        </div>
+        <div class="about">
+            <h1>Main Objective of this Project</h1>
+            <p>In today’s fast-paced world, finding the right person to assist with a specific problem or project can be challenging. TALENT Match solves this by offering a seamless, skill-based matching system that ensures you find the right collaborator or expert for your unique needs.</p>
+        </div>
+        <div class="about">
+            <h1>What Makes Us Unique</h1>
+            <p>
+                A user-focused platform designed for both hiring and collaboration.<br>
+                Skill-based matching for precise results.<br>
+                No middleman – connect directly with the right individuals.
+            </p>
+        </div>
+        <div class="about">
+            <h1>Vision</h1>
+            <p>Our vision is to create a global network of skilled individuals who can connect, collaborate, and innovate together to solve real-world challenges.</p>
+        </div>
+        <div class="about">
+            <h1>Team</h1>
+            <p>TALENT Match is brought to you by a passionate team of innovators and problem-solvers committed to making skill-based collaborations easier and more effective than ever before.</p>
+        </div>
+    </div>
+    <div class="scroll">
+        <div class="images">
+            <img src="about_us.jpg" alt="About Us">
+            <img src="mission.jpg" alt="Mission">
+            <img src="objective.webp" alt="Objective">
+            <img src="unique.webp" alt="Unique">
+            <img src="vision.jpg" alt="Vision">
+            <img src="team.png" alt="Team">
+        </div>
+    </div>
+</div>
+
+
+<!-- How to proceed -->
+<section>
+    <div class="how-to-proceed">
+        <h1 style="font-size: 100px;">How to Proceed</h1>
+        <div class="steps">
+            <div class="step-list">
+                <h1>Step 1</h1>
+                <p><i class="fa-solid fa-circle"></i> New users register on the platform by providing details</p>
+                <p><i class="fa-solid fa-circle"></i> Existing users log in with their credentials</p>
+
+                <h1>Step 2</h1>
+                <p><i class="fa-solid fa-circle"></i> Post a query/Browse a query</p>
+
+                <h1>Step 3</h1> 
+                <p><i class="fa-solid fa-circle"></i> Queries are matched with profiles in the database</p>
+
+                <h1>Step 4</h1>
+                <p><i class="fa-solid fa-circle"></i> Seeker sends a collaborative request to the expert profile</p>
+
+                <h1>Step 5</h1>
+                <p><i class="fa-solid fa-circle"></i> On acceptance, both parties are connected through a virtual collaborative setup</p>
+            </div>
+
+            <div class="workflow-image">
+                <img src="workflow.png" alt="Workflow Process">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Why Choose Us Section -->
+<h1 id="why-choose-us">Why Choose Us!</h1>
+<div class="choose_us">
+    <div class="container">
+        <div class="card_choose">
+            <img src="green.jpg" alt="Skill-Based Connect">
+            <div class="info">
+                <h3>Skill-Based Connect</h3>
+                <p>Our platform uses an advanced algorithm to connect you with individuals whose skills match your needs.</p>
+                <div class="more-info">
+                    <p>Our matching system ensures precision and efficiency in finding the perfect collaborator for your goals.</p>
+                    <p>Skill-Based Connect focuses on matching users with others who have complementary skills and expertise. By prioritizing specific technical and soft skills, it ensures that connections are meaningful and aligned with users' needs. Whether for collaboration, learning, or professional growth, Skill-Based Connect streamlines the process, helping individuals find the right people to achieve their goals and solve problems efficiently.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card_choose">
+            <img src="violet.jpg" alt="Effective Collaboration">
+            <div class="info">
+                <h3>Effective Collaboration</h3>
+                <p>Seamless communication tools to foster effective teamwork.</p>
+                <div class="more-info">
+                    <p>We provide innovative tools to help teams work efficiently and achieve success together.</p>
+                    <p>Effective Collaboration is at the core of TalentMatch, providing a platform where users can seamlessly work together to achieve shared goals. By connecting individuals with complementary skills and expertise, it fosters a collaborative environment that encourages communication, creativity, and problem-solving. With built-in tools for real-time interaction and project management, Effective Collaboration ensures that teams stay aligned, productive, and focused, driving successful outcomes for all involved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card_choose">
+            <img src="orange.jpg" alt="Personalized Connections">
+            <div class="info">
+                <h3>Personalized Connections</h3>
+                <p>We ensure every connection is tailored to your specific goals and requirements.</p>
+                <div class="more-info">
+                    <p>Personalized recommendations ensure you connect with the right people every time.</p>
+                    <p>TalentMatch is a platform designed to create personalized connections by matching 
+                        users based on their unique skills, goals, and project needs. Using intelligent algorithms, 
+                        it provides tailored recommendations for collaborators, mentors, and opportunities, ensuring that 
+                        every connection is meaningful and aligned with the user’s objectives. Whether you’re looking for 
+                        career growth, project collaboration, or mentorship, TalentMatch streamlines the process, fostering 
+                        valuable relationships that drive success.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card_choose">
+            <img src="blue.jpg" alt="Global Reach">
+            <div class="info">
+                <h3>Global Reach</h3>
+                <p>Access a vast network of skilled individuals worldwide.</p>
+                <div class="more-info">
+                    <p>Our platform connects users globally, fostering a community of skilled professionals.</p>
+                    <p>Global Reach connects users from around the world, breaking down geographical barriers
+                         to foster collaboration and networking on a global scale. With a diverse, international
+                          user base, it opens up opportunities to work with skilled professionals from different 
+                          cultures, industries, and backgrounds. Whether for projects, mentorship, or career growth, 
+                          Global Reach expands your network beyond borders, offering new perspectives and enriching 
+                          experiences that drive innovation and success.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- FAQ'S -->
+ <h1 class="head" style="font-size: 100px;">Frequently Asked Questions</h1>
+ <div class="Cards-container">
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 What is TALENT Match?
+             </div>
+             <div class="Cards-back">
+                 TALENT Match is a platform that connects users based on their skills and expertise. Users can post queries and get matched with others who have the required skills to collaborate on tasks or projects.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 How do I register?
+             </div>
+             <div class="Cards-back">
+                 To register, simply click on the 'Register' button on the homepage and provide your personal and professional details, including your skills and work experience.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 How does the system match my query with users?
+             </div>
+             <div class="Cards-back">
+                 The system uses a query-to-user matching algorithm that analyzes the skills and experience specified in your query and compares them with the registered users' profiles.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 Can I post a query without creating an account?
+             </div>
+             <div class="Cards-back">
+                 No, you must be a registered user to post a query. Registration ensures that your profile is complete and accurate.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 What types of queries can I post?
+             </div>
+             <div class="Cards-back">
+                 You can post a variety of queries, including hiring requests, requests for expert advice or mentorship, collaboration opportunities for research, and help with tasks or problem-solving.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 How do I connect with other users?
+             </div>
+             <div class="Cards-back">
+                 Once your query is matched with relevant users, you can contact them using external communication tools like Google Meet, Zoom, or other preferred methods. The platform does not have an in-built messaging system.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 Can I post a query without creating an account?
+             </div>
+             <div class="Cards-back">
+                 No, you must be a registered user to post a query. Registration ensures that your profile is complete and accurate.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 Is there a fee to use TALENT Match?
+             </div>
+             <div class="Cards-back">
+                 TALENT Match is free for all users. You can register, post queries, and connect with other users without any charges. Premium features may be introduced in the future.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 Can I update my profile after registration?
+             </div>
+             <div class="Cards-back">
+                 Yes, you can update your profile at any time. Simply log into your account and go to the profile settings to modify your personal information, skills, or work experience.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 How can I be sure that the users I connect with are reliable?
+             </div>
+             <div class="Cards-back">
+                 TALENT Match encourages profile transparency. Users are encouraged to upload resumes, portfolios, or recommendations. You can also review user profiles and initiate a video call before engaging in collaboration.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 Can I use TALENT Match for personal or academic purposes?
+             </div>
+             <div class="Cards-back">
+                 Yes, TALENT Match is not limited to professional networking. You can use it for academic purposes or personal projects, whether you're seeking guidance, help, or collaboration.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 What happens if the user I connect with is not responsive?
+             </div>
+             <div class="Cards-back">
+                 If a user is not responsive, you can reach out to other users who may be available. The platform facilitates connections, but responsiveness is ultimately up to the users.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 Can I collaborate with multiple people at once?
+             </div>
+             <div class="Cards-back">
+                 Yes, you can collaborate with multiple users at the same time. TALENT Match supports collaboration on different queries or projects simultaneously.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 How do I post a query?
+             </div>
+             <div class="Cards-back">
+                 To post a query, simply log in to your account and navigate to the "Post Query" section. Enter the details of your request, including the skills or expertise you're seeking, and submit.
+             </div>
+         </div>
+     </div>
+     <div class="flip-Cards">
+         <div class="Cards">
+             <div class="Cards-front">
+                 Is my data secure on TALENT Match?
+             </div>
+             <div class="Cards-back">
+                 Yes, we ensure that your data is stored securely and follows industry-standard security practices to protect your personal information and privacy.
+             </div>
+         </div>
+     </div>
+ </div>
+
+  <!-- Agora Video Call Section -->
+  <!-- <div id="video-call-section">
+    <div id="local-player">Local Stream</div>
+    <div id="remote-player">Remote Stream</div>
+    <div id="video-call-controls">
+      <button id="start-call">Start Call</button>
+      <button id="leave-call">Leave Call</button>
+    </div>
+  </div> -->
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 TalentMatch. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+
+    // Add event listeners to flip the Cardss on click
+    document.querySelectorAll('.flip-Cards').forEach(Cards => {
+        Cards.addEventListener('click', () => {
+            Cards.querySelector('.Cards').classList.toggle('flip');
+        });
+    });
+
+    const APP_ID = 'YOUR_APP_ID'; // Replace with your Agora App ID
+    const TOKEN = null;          // Replace with your Agora token, or leave null for testing
+    const CHANNEL = 'test';      // Replace with your channel name
+
+    const client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });
+    let localTrack;
+
+    document.getElementById('start-call').onclick = async () => {
+      try {
+        // Join the Agora channel
+        await client.join(APP_ID, CHANNEL, TOKEN, null);
+        
+        // Create and publish the local video track
+        localTrack = await AgoraRTC.createCameraVideoTrack();
+        localTrack.play('local-player');
+        await client.publish(localTrack);
+
+        console.log('Call started successfully!');
+
+        // Subscribe to remote streams
+        client.on('user-published', async (user, mediaType) => {
+          await client.subscribe(user, mediaType);
+          console.log('Subscribed to remote user:', user.uid);
+
+          if (mediaType === 'video') {
+            const remoteTrack = user.videoTrack;
+            remoteTrack.play('remote-player');
+          }
+        });
+      } catch (error) {
+        console.error('Failed to start the call:', error);
+      }
+    };
+
+    document.getElementById('leave-call').onclick = async () => {
+      try {
+        // Leave the Agora channel
+        await client.leave();
+
+        // Stop and close the local track
+        if (localTrack) {
+          localTrack.stop();
+          localTrack.close();
+        }
+
+        console.log('Call ended successfully!');
+      } catch (error) {
+        console.error('Failed to leave the call:', error);
+      }
+    };
+    
+    fetch('http://localhost:5500').catch(() =>
+        alert('Starting the server. Please refresh the page.')
+    );
+  </script>
+</body>
+</html>
